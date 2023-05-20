@@ -35,6 +35,10 @@ linkerdNamespace: linkerd
 nodeSelector: &default_node_selector
   kubernetes.io/os: linux
 
+# -- Default nodeAffinity section, See the
+# [K8S documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity) for more information
+nodeAffinity: &default_node_affinity_selector
+
 # -- For Private docker registries, authentication is needed.
 #  Registry secrets are applied to the respective service accounts
 imagePullSecrets: []
@@ -119,6 +123,11 @@ metricsAPI:
   # -- NodeSelector section, See the
   # [K8S documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector) for more information
   nodeSelector: *default_node_selector
+
+  # -- NodeAffinity section, See the
+  # [K8S documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity) for more information
+  nodeAffinity: *default_node_affinity_selector
+
   # -- Tolerations section, See the
   # [K8S documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
   # for more information
@@ -548,6 +557,11 @@ prometheus:
   # -- NodeSelector section, See the
   # [K8S documentation](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector) for more information
   nodeSelector: *default_node_selector
+
+  # -- NodeAffinity section, See the
+  # [K8S documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity) for more information
+  nodeAffinity: *default_node_affinity_selector
+
   # -- Tolerations section, See the
   # [K8S documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
   # for more information
